@@ -1,0 +1,24 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <!--
+        creating a clickable button for each hero in the HEROES list
+        heroes - holds the mock hero list
+        hero - holds the current hero object for each iteration through the list 
+
+        on click, update selectedHero Property to be whichever hero is selected, and then display that heros details
+    -->
+    <li *ngFor="let hero of heroes">
+        <!--
+            [class.selected]="hero === selectedHero" <-- conditional css styling
+            tells the program to apply this styling when the current row hero is the same as the selectedHero
+        -->
+        <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
+            <span class="badge">{{hero.id}}</span>
+            <span class="name">{{hero.name}}</span>
+        </button>
+    </li>
+</ul>
+<!--
+    when the user clicks a hero in the list, selectedHero updates and the HeroDetailComponent displays the new hero
+-->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
